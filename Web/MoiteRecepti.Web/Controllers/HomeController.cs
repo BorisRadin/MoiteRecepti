@@ -3,14 +3,32 @@
     using System.Diagnostics;
 
     using MoiteRecepti.Web.ViewModels;
+    using MoiteRecepti.Web.ViewModels.Home;
 
     using Microsoft.AspNetCore.Mvc;
+    using MoiteRecepti.Data;
+    using System.Linq;
 
     public class HomeController : BaseController
     {
+        private ApplicationDbContext db;
+
+        public HomeController(ApplicationDbContext db)
+        {
+            this.db = db;
+        }
+
         public IActionResult Index()
         {
-            return this.View();
+            var viewmodel = new IndexViewModel
+            {
+                CategoriesCount = this.db.Categories.Count(),
+                ImagesCount = this.db.Images.Count(),
+                IngredientsCount = this.db.Ingredients.Count(),
+                RecipesCount = this.db.Recipes.Count(),
+            };
+
+            return this.View(viewmodel);
         }
 
         public IActionResult Privacy()
