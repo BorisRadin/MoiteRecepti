@@ -20,6 +20,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using MoiteRecepti.Services.Data;
+    using MoiteRecepti.Services;
 
     public class Program
     {
@@ -67,6 +68,7 @@
             services.AddTransient<IGetCountsService, GetCountsService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IRecipesService, RecipesService>();
+            services.AddTransient<IGotvachBgScraperService, GotvachBgScraperService>();
         }
 
         private static void Configure(WebApplication app)
