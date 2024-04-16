@@ -19,6 +19,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using MoiteRecepti.Services.Data;
 
     public class Program
     {
@@ -63,6 +64,7 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<IGetCountsService, GetCountsService>();
         }
 
         private static void Configure(WebApplication app)

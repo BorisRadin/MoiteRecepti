@@ -1,34 +1,29 @@
 ﻿namespace MoiteRecepti.Web.Controllers
 {
     using System.Diagnostics;
-
-    using MoiteRecepti.Web.ViewModels;
-    using MoiteRecepti.Web.ViewModels.Home;
+    using System.Linq;
 
     using Microsoft.AspNetCore.Mvc;
     using MoiteRecepti.Data;
-    using System.Linq;
+    using MoiteRecepti.Data.Common.Repositories;
+    using MoiteRecepti.Data.Models;
+    using MoiteRecepti.Services.Data;
+    using MoiteRecepti.Web.ViewModels;
+    using MoiteRecepti.Web.ViewModels.Home;
 
     public class HomeController : BaseController
     {
-        private ApplicationDbContext db;
+        private readonly IGetCountsService countsService;
 
-        public HomeController(ApplicationDbContext db)
+        public HomeController(IGetCountsService countsService)
         {
-            this.db = db;
+            this.countsService = countsService;
         }
 
         public IActionResult Index()
         {
-            var viewmodel = new IndexViewModel
-            {
-                CategoriesCount = this.db.Categories.Count(),
-                ImagesCount = this.db.Images.Count(),
-                IngredientsCount = this.db.Ingredients.Count(),
-                RecipesCount = this.db.Recipes.Count(),
-            };
-
-            return this.View(viewmodel);
+            var viewModel = this.countsService.GetCounts();
+            return this.View(viewModel);
         }
 
         public IActionResult Privacy()
