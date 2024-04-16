@@ -1,4 +1,5 @@
-﻿using MoiteRecepti.Web.ViewModels.Home;
+﻿using MoiteRecepti.Services.Data.DTOs;
+using MoiteRecepti.Web.ViewModels.Home;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace MoiteRecepti.Services.Data
 {
     public interface IGetCountsService
     {
-        IndexViewModel GetCounts();
+        CountsDTO GetCounts();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MoiteRecepti.Data.Common.Repositories;
 using MoiteRecepti.Data.Models;
+using MoiteRecepti.Services.Data.DTOs;
 using MoiteRecepti.Web.ViewModels.Home;
 using System;
 using System.Collections.Generic;
@@ -28,9 +29,9 @@ namespace MoiteRecepti.Services.Data
             this.recipesRepository = recipesRepository;
         }
 
-        public IndexViewModel GetCounts()
+        public CountsDTO GetCounts()
         {
-            var viewmodel = new IndexViewModel
+            var viewmodel = new CountsDTO
             {
                 CategoriesCount = this.categoriesRepository.All().Count(),
                 ImagesCount = this.imagesRepository.All().Count(),

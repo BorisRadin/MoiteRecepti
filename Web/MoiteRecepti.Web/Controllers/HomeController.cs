@@ -2,7 +2,7 @@
 {
     using System.Diagnostics;
     using System.Linq;
-
+    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using MoiteRecepti.Data;
     using MoiteRecepti.Data.Common.Repositories;
@@ -22,7 +22,14 @@
 
         public IActionResult Index()
         {
-            var viewModel = this.countsService.GetCounts();
+            var countsDto = this.countsService.GetCounts();
+            var viewModel = new IndexViewModel
+            {
+                CategoriesCount = countsDto.CategoriesCount,
+                ImagesCount = countsDto.ImagesCount,
+                IngredientsCount = countsDto.IngredientsCount,
+                RecipesCount = countsDto.RecipesCount,
+            };
             return this.View(viewModel);
         }
 
