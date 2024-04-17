@@ -1,5 +1,7 @@
 ﻿using MoiteRecepti.Data.Common.Repositories;
 using MoiteRecepti.Data.Models;
+using MoiteRecepti.Services.Mapping;
+using MoiteRecepti.Web.ViewModels;
 using MoiteRecepti.Web.ViewModels.Recipes;
 using System;
 using System.Collections.Generic;
@@ -21,7 +23,7 @@ namespace MoiteRecepti.Services.Data
             this.recipesRepository = recipesRepository;
             this.ingredientsRepository = ingredientsRepository;
         }
-        public async Task CreateAsync(CreateRecipeInputModel input)
+        public async Task CreateAsync(CreateRecipeInputModel input, string userId)
         {
             var recipe = new Recipe
             {
@@ -31,6 +33,7 @@ namespace MoiteRecepti.Services.Data
                 Instructions = input.Instructions,
                 Name = input.Name,
                 PortionsCount = input.PortionsCount,
+                AddedByUserId = userId,
 
             };
 
@@ -51,6 +54,21 @@ namespace MoiteRecepti.Services.Data
 
             await this.recipesRepository.AddAsync(recipe);
             await this.recipesRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12)
+        {
+            var recipes = this.recipesRepository.AllAsNoTracking()
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage).Take(itemsPerPage)
+                .To<T>()
+                .ToList();
+            return recipes;
+        }
+
+        public int GetCount()
+        {
+            return this.recipesRepository.All().Count();
         }
     }
 }
