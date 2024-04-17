@@ -20,7 +20,7 @@ namespace MoiteRecepti.Web.Controllers
 
         public async Task<IActionResult> Add()
         {
-            await this.gotvachBgScraperService.ImportRecipesAsync(10);
+            await this.gotvachBgScraperService.ImportRecipesAsync(200, 201);
 
             return this.Redirect("/");
         }
