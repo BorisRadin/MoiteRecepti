@@ -11,6 +11,7 @@
     public interface IRecipesService
     {
         Task CreateAsync(CreateRecipeInputModel input, string userId);
+
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12);
 
         int GetCount();

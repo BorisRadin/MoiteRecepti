@@ -14,7 +14,7 @@ namespace MoiteRecepti.Web.ViewModels.Recipes
         public string IngredientName { get; set; }
 
         [Required]
-        [MinLength(3)]
+        [MinLength(1)]
         public string Quantity { get; set; }
     }
 }

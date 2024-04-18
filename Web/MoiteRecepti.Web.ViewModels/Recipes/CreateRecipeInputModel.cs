@@ -1,5 +1,6 @@
 ﻿namespace MoiteRecepti.Web.ViewModels.Recipes
 {
+    using Microsoft.AspNetCore.Http;
     using MoiteRecepti.Data.Models;
     using System;
     using System.Collections.Generic;
@@ -31,6 +32,8 @@
         public int PortionsCount { get; set; }
 
         public int CategoryId { get; set; }
+
+        public IEnumerable<IFormFile> Images { get; set; }
 
         public IEnumerable<RecipeIngredientInputModel> Ingredients { get; set; }
 
