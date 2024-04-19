@@ -36,7 +36,6 @@
                 Name = input.Name,
                 PortionsCount = input.PortionsCount,
                 AddedByUserId = userId,
-                Images = input.Images as Image[],
 
             };
 
@@ -68,12 +67,12 @@
 
                 var dbImage = new Image
                 {
-                    AddedByUserId = int.Parse(userId),
+                    AddedByUserId = userId,
                     Extension = extension,
                 };
                 recipe.Images.Add(dbImage);
 
-                var physicalPath = $"wwwroot/images/recipes/{dbImage.Id}.{dbImage.Extension}";
+                var physicalPath = $"wwwroot/images/{dbImage.Id}{dbImage.Extension}";
 
                 var fileStream = new FileStream(physicalPath, FileMode.Create);
                 await image.CopyToAsync(fileStream);

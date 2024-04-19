@@ -48,14 +48,14 @@
 
             var user = await this.userManager.GetUserAsync(this.User);
 
-            try
-            {
+            //try
+            //{
                 await this.recipesService.CreateAsync(input, user.Id);
-            }
-            catch (Exception ex)
-            {
-                this.ModelState.AddModelError(string.Empty, ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    this.ModelState.AddModelError(string.Empty, ex.Message);
+            //}
             //TODO: Redirect to recipe info page
             return this.Redirect("/");
         }

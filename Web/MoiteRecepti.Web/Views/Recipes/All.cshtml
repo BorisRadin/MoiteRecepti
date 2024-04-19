@@ -9,7 +9,7 @@
 @foreach(var recipe in this.Model.Recipes)
 {
     <div class="media col-md-3">
-            <img src="@recipe.ImageUrl" class="mr-3 img-responsive"/>
+            <img src="@recipe.ImageUrl" class="mr-3 img-fluid align-content-lg-center"/>
         <div class="media-body">
             <h5 class="mt-0">@recipe.Name</h5>
             @recipe.CategoryName
