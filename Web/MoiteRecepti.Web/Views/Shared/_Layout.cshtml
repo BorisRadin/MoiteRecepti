@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
-    <link rel="stylesheet" href="~/css/lazy.css">
+     @* <link rel="stylesheet" href="~/css/lazy.css"> 
+ *@    <link rel="Stylesheet" href="~/css/style.css" /> 
+
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg- border-bottom box-shadow mb-3">
             <div class="container">
@@ -44,7 +46,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="mt-auto">
         <div class="container">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
