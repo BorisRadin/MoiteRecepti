@@ -16,9 +16,15 @@ namespace MoiteRecepti.Data.Seeding
                 return;
             }
 
-            await dbContext.Categories.AddAsync(new Category { Name = "Тарт" });
-            await dbContext.Categories.AddAsync(new Category { Name = "Кекс" });
+            await dbContext.Categories.AddAsync(new Category { Name = "Супа" });
+            await dbContext.Categories.AddAsync(new Category { Name = "Салата" });
             await dbContext.Categories.AddAsync(new Category { Name = "Печено свинско" });
+            await dbContext.Categories.AddAsync(new Category { Name = "Пържено свинско" });
+            await dbContext.Categories.AddAsync(new Category { Name = "Печено пилешко" });
+            await dbContext.Categories.AddAsync(new Category { Name = "Пържено пилешко" });
+            await dbContext.Categories.AddAsync(new Category { Name = "Постно" });
+            await dbContext.Categories.AddAsync(new Category { Name = "Сандвич" });
+            await dbContext.Categories.AddAsync(new Category { Name = "Десерт" });
 
             await dbContext.SaveChangesAsync();
         }

@@ -21,6 +21,7 @@
     using Microsoft.Extensions.Hosting;
     using MoiteRecepti.Services.Data;
     using MoiteRecepti.Services;
+    using Microsoft.AspNetCore.Identity;
 
     public class Program
     {
